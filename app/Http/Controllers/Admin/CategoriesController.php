@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Services\Admin\CategoryService;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class CategoriesController extends \App\Http\Controllers\Controller
 {
@@ -24,8 +25,15 @@ class CategoriesController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.categories.index');
+    }
+
+    public function getData()
+    {
+        return Datatables::of(Category::query())
+            ->addColumn('parent', function (Category $category) {
+                return $category->parent->name ?? 'None';
+            })->make(true);
     }
 
     /**

@@ -42,6 +42,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     
     // Manage Categories
     Route::resource('categories', CategoriesController::class);
+    Route::get('categories-data', [CategoriesController::class, 'getData'])->name('categories-data');
     Route::get('categories-check-slug', [CategoriesController::class, 'checkSlug'])->name('categories-check-slug');
 
 });

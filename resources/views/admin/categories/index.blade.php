@@ -26,27 +26,16 @@
                 </a>
   
                 <!-- Default Table -->
-                <table class="table">
+                <table id="table" class="table table-bordered">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Created at</th>
-                      <th scope="col">Actions</th>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>Parent</th>
+                      <th>Created at</th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
-                  <tbody>
-
-                    @foreach ($categories as $category)
-                      <tr>
-                        <th scope="row">{{ $category->id }}</th>
-                        <td>{{ $category->name }}</td>
-                        <td>{{ $category->created_at }}</td>
-                        <td><a class="btn btn-info rounded-pill" href="{{ route('admin.categories.edit', $category->id) }}">Edit</a></td>
-                      </tr>   
-                    @endforeach
-                    
-                  </tbody>
                 </table>
                 <!-- End Default Table Example -->
               </div>
@@ -55,4 +44,23 @@
         </div>
     </section>
 </main>
+@endsection
+
+@section('add-js')
+<script>
+$(function() {
+    $('#table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{{ route('admin.categories-data') }}',
+        columns: [
+          { data: 'id', name: 'id' },
+          { data: 'name', name: 'name' },
+          { data: 'parent', name: 'parent' },
+          { data: 'created_at', name: 'created_at' },
+          { render: (data,type,row) => { return `<a class="btn btn-info rounded-pill" href='categories/${row.id}/edit'>Edit</a>`;}}
+        ]
+    });
+});
+</script>
 @endsection
