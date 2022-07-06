@@ -25,11 +25,36 @@
       </li><!-- End Roles Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('admin.categories.index') }}">
-          <i class="bi bi-folder-fill"></i>
-          <span>Categories</span>
+        <a class="nav-link collapsed" data-bs-target="#products-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Products</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-      </li><!-- End Roles Nav -->
+        <ul id="products-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{ route('admin.categories.index') }}">
+              <i class="bi bi-circle"></i>
+              <span>Categories</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ route('admin.brands.index') }}">
+              <i class="bi bi-circle"></i>
+              <span>Brands</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ route('admin.sizes.index') }}">
+              <i class="bi bi-circle"></i>
+              <span>Sizes</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ route('admin.colors.index') }}">
+              <i class="bi bi-circle"></i>
+              <span>Colors</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Tables Nav -->
 
     </ul>
 

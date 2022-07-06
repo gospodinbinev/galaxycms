@@ -11,6 +11,9 @@ use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Brand;
+use App\Models\Size;
+use App\Models\Color;
 
 /* Admin breadcrumbs */
 
@@ -71,4 +74,58 @@ Breadcrumbs::for('admin.categories.create', function (BreadcrumbTrail $trail) {
 Breadcrumbs::for('admin.categories.edit', function (BreadcrumbTrail $trail, Category $category) {
     $trail->parent('admin.categories.index');
     $trail->push('Edit Category', route('admin.categories.edit', $category->id));
+});
+
+// Brands Index
+Breadcrumbs::for('admin.brands.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Brands', route('admin.brands.index'));
+});
+
+// Brands Create
+Breadcrumbs::for('admin.brands.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.brands.index');
+    $trail->push('Create Brand', route('admin.brands.create'));
+});
+
+// Brands Edit
+Breadcrumbs::for('admin.brands.edit', function (BreadcrumbTrail $trail, Brand $brand) {
+    $trail->parent('admin.brands.index');
+    $trail->push('Edit Brand', route('admin.brands.edit', $brand->id));
+});
+
+// Sizes Index
+Breadcrumbs::for('admin.sizes.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Sizes', route('admin.sizes.index'));
+});
+
+// Sizes Create
+Breadcrumbs::for('admin.sizes.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.sizes.index');
+    $trail->push('Create Size', route('admin.sizes.create'));
+});
+
+// Sizes Edit
+Breadcrumbs::for('admin.sizes.edit', function (BreadcrumbTrail $trail, Size $size) {
+    $trail->parent('admin.sizes.index');
+    $trail->push('Edit Size', route('admin.sizes.edit', $size->id));
+});
+
+// Colors Index
+Breadcrumbs::for('admin.colors.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Colors', route('admin.colors.index'));
+});
+
+// Colors Create
+Breadcrumbs::for('admin.colors.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.colors.index');
+    $trail->push('Create Color', route('admin.colors.create'));
+});
+
+// Colors Edit
+Breadcrumbs::for('admin.colors.edit', function (BreadcrumbTrail $trail, Color $color) {
+    $trail->parent('admin.colors.index');
+    $trail->push('Edit Color', route('admin.colors.edit', $color->id));
 });

@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\BrandsController;
+use App\Http\Controllers\Admin\ColorsController;
+use App\Http\Controllers\Admin\SizesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +47,21 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('categories', CategoriesController::class);
     Route::get('categories-data', [CategoriesController::class, 'getData'])->name('categories-data');
     Route::get('categories-check-slug', [CategoriesController::class, 'checkSlug'])->name('categories-check-slug');
+
+    // Manage Brands
+    Route::resource('brands', BrandsController::class);
+    Route::get('brands-data', [BrandsController::class, 'getData'])->name('brands-data');
+    Route::get('brands-check-slug', [BrandsController::class, 'checkSlug'])->name('brands-check-slug');
+
+    // Manage Sizes
+    Route::resource('sizes', SizesController::class);
+    Route::get('sizes-data', [SizesController::class, 'getData'])->name('sizes-data');
+    Route::get('sizes-check-slug', [SizesController::class, 'checkSlug'])->name('sizes-check-slug');
+
+    // Manage Colors
+    Route::resource('colors', ColorsController::class);
+    Route::get('colors-data', [ColorsController::class, 'getData'])->name('colors-data');
+    Route::get('colors-check-slug', [ColorsController::class, 'checkSlug'])->name('colors-check-slug');
 
 });
 

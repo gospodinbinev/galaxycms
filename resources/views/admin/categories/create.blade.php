@@ -69,7 +69,7 @@
 
 @section('add-js')
 <script>
-  $('#name').change(function(e) {
+  $('#name').keyup(function(e) {
     $.get('{{ route('admin.categories-check-slug') }}', 
       { 'name': $(this).val() }, 
       function( data ) {
