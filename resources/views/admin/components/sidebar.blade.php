@@ -28,7 +28,13 @@
         <a class="nav-link collapsed" data-bs-target="#products-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Products</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="products-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="products-nav" class="nav-content collapse
+
+        @if (Route::is('admin.categories.*') || Route::is('admin.brands.*') || 
+        Route::is('admin.sizes.*') || Route::is('admin.colors.*'))show 
+        @endif"
+        
+        data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{ route('admin.categories.index') }}">
               <i class="bi bi-circle"></i>
